@@ -50,3 +50,4 @@ Route::resource('photos', 'PhotoController');
 Route::resource('admin/users', 'Admin\UsersController');
 
 
+
