@@ -32,7 +32,7 @@ class DemoController extends Controller
 
     public function testlinenoti()
     {
-        $line_noti_token = "vgUwtYotVt0w0bWxPojFnKEoZ2ANi6rb0ceCHizJ5Pv";
+        $line_noti_token = "4MLW11iiHkLKjKAO8rtrnoN7liOS9KnkpbzKkNVK5HO";
         
         $message = array(
           'message' => "โย่วห์ๆ",//required message

@@ -60,6 +60,6 @@ Route::get('logout', 'LoginController@logout');
 Route::post('login', 'LoginController@authenticate');
 
 
-Route::get('login', 'DemoController@testlinenoti');
+Route::get('testlinenoti', 'DemoController@testlinenoti');
 
 Route::get('testexcel' ,'DemoController@testexcel');
