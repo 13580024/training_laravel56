@@ -19,7 +19,7 @@ Route::get('foo', function () {
     return 'Hello World';
 });
 
-Route::get('demoone', 'DemoController@index');
+
 Route::post('demotwo', 'DemoController@demotwo');
 Route::match(['get', 'post'], 'demothree', 'DemoController@demothree');
 Route::any('/demofour', 'DemoController@demofour');
@@ -49,5 +49,17 @@ Route::resource('photos', 'PhotoController');
 
 Route::resource('admin/users', 'Admin\UsersController');
 
+Route::prefix('admin')->middleware('auth')->group(function () {
+	Route::resource('users', 'Admin\UsersController');
+	Route::get('demoone', 'DemoController@index');
+});
 
 
+Route::get('login', 'LoginController@index')->name('login');
+Route::get('logout', 'LoginController@logout');
+Route::post('login', 'LoginController@authenticate');
+
+
+Route::get('login', 'DemoController@testlinenoti');
+
+Route::get('testexcel' ,'DemoController@testexcel');

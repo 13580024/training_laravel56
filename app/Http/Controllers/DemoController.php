@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use \App\Exports\BladeExport;
+use App\User as UserMod; 
+
 
 class DemoController extends Controller
 {
     public function index()
     {
-        return view('admin.user.lists');
+        echo "i love it";
     }
 
     public function demotwo()
@@ -25,6 +28,28 @@ class DemoController extends Controller
     {
         return "Method GET, POST, PUT/PATCH, DELETE : demofour";
     }
+
+
+    public function testlinenoti()
+    {
+        $line_noti_token = "vgUwtYotVt0w0bWxPojFnKEoZ2ANi6rb0ceCHizJ5Pv";
+        
+        $message = array(
+          'message' => "โย่วห์ๆ",//required message
+          'stickerPackageId'=> 3,
+          'stickerId'=> 189
+        );
+        
+        notify_message($message,$line_noti_token);
+        
+        return 'ok';
+    }
+
+    public function testexcel(){
+        $user = UserMod::all();
+        return \Excel::download(new BladeExport($user->toArray()), 'invoices.xlsx');
+    }
+
 
 
 }

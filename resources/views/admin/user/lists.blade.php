@@ -15,12 +15,17 @@
 <!-- Waiting for flash message -->
 <!-- #################### Flash Message Start #################### -->
 
-
+@include('admin.layouts.partials.flash-message')
 
 <!-- Example DataTables Card-->
 <div class="card mb-3">
- <div class="card-header">
-   <i class="fa fa-table"></i> Users Lists </div>
+   <div class="card-header">
+    <i class="fa fa-table"></i> Users Lists &nbsp;&nbsp;
+    <a href="{{ URL::to('admin/users/create') }}">
+        <button type="button" class="btn btn-primary btn-sm">Create User</button>
+    </a>
+  </div>
+
 
  <div class="card-body">
    <div class="table-responsive">
@@ -74,10 +79,13 @@
                    <a href="#">
                        <button type="button" class="btn btn-primary btn-sm">Info</button>
                    </a>
-                   <a href="#">
+                   <a href="{{ URL::to('admin/users/'.$item->id.'/edit') }}">
                        <button type="button" class="btn btn-success btn-sm">Edit</button>
                    </a>
-                   <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_user_4">Delete</button>
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#modal_user_{{ $item->id }}">Delete</button>
+                        <!-- Include Delete Modal Confirmation -->
+                        @include('admin.layouts.partials.modal-delete', ['url' => 'admin/users', 'name' => 'user', 'id' => $item->id])
+
                    <!-- Include Delete Modal Confirmation -->
 
                    <!-- #################### Modal Delete Row by Row in Table Start #################### -->
